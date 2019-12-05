@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/camera_preview"
+tools:context=".MainActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       >
+
+
+        <SurfaceView
+            android:id="@+id/surface_view"
+            android:layout_width="match_parent"
+            android:layout_height="265dp"
+
+
+            android:focusable="auto">
+
+
+        </SurfaceView>
+
+        <com.example.textrecognation.FrameView
+            android:id="@+id/frame_view"
+            android:layout_width="200dp"
+            android:layout_height="100dp" />
+        <!--<View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="229dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/pic_border" />-->
+
+
+        <!-- <SurfaceView
+             android:id="@+id/TransparentView"
+             android:layout_width="match_parent"
+             android:layout_height="250dp"
+             android:layout_alignParentTop="true"></SurfaceView>-->
+    </FrameLayout>
+
+
+
+
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.041">
+
+        <TextView
+            android:id="@+id/text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_margin="120dp"
+            android:layout_alignParentBottom="true"
+            android:text="No Text"
+            android:textColor="#F00"
+            android:textSize="20sp" />
+
+    </ScrollView>
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text=""
+        android:textColor="#F00"
+        android:layout_marginTop="290dp"
+        android:layout_marginLeft="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.593" />
+
+    <Button
+        android:id="@+id/find_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Find"
+        android:layout_marginTop="450dp"
+        android:layout_marginLeft="150dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintVertical_bias="0.793" />
+
+    <Button
+        android:id="@+id/add_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:layout_marginTop="375dp"
+        android:layout_marginLeft="150dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintVertical_bias="0.679" />
+
+    <!--<View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+
+        android:layout_gravity="top"
+        android:background="@drawable/rectangle" />
+-->
+</RelativeLayout>

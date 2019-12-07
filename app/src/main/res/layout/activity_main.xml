@@ -10,25 +10,21 @@ tools:context=".MainActivity">
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-       >
+        android:layout_height="wrap_content">
 
 
         <SurfaceView
             android:id="@+id/surface_view"
             android:layout_width="match_parent"
             android:layout_height="265dp"
-
-
             android:focusable="auto">
-
-
         </SurfaceView>
 
-        <com.example.textrecognation.FrameView
-            android:id="@+id/frame_view"
+       <!-- <com.example.textrecognation.ViewfinderView
+            android:id="@+id/viewfinder_view"
             android:layout_width="200dp"
-            android:layout_height="100dp" />
+            android:layout_height="200dp"
+            android:background="#0000" />-->
         <!--<View
             android:id="@+id/view"
             android:layout_width="match_parent"

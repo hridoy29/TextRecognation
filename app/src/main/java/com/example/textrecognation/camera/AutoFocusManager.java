@@ -23,8 +23,8 @@ import android.hardware.Camera;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
-import com.codetr.tanwir.textandlanguageusecamera.CaptureActivity;
 import com.example.textrecognation.ImageProcess;
+
 
 import java.util.ArrayList;
 import java.util.Collection;

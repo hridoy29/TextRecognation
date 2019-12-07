@@ -17,8 +17,9 @@
 package com.example.textrecognation;
 import java.util.List;
 
-import com.codetr.tanwir.textandlanguageusecamera.camera.CameraManager;
+import com.example.textrecognation.camera.CameraManager;
 
+import android.app.Notification;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -40,28 +41,44 @@ import android.view.View;
 public final class ViewfinderView extends View {
   //private static final long ANIMATION_DELAY = 80L;
 
-  /** Flag to draw boxes representing the results from TessBaseAPI::GetRegions(). */
+  /**
+   * Flag to draw boxes representing the results from TessBaseAPI::GetRegions().
+   */
   static final boolean DRAW_REGION_BOXES = false;
 
-  /** Flag to draw boxes representing the results from TessBaseAPI::GetTextlines(). */
+  /**
+   * Flag to draw boxes representing the results from TessBaseAPI::GetTextlines().
+   */
   static final boolean DRAW_TEXTLINE_BOXES = true;
 
-  /** Flag to draw boxes representing the results from TessBaseAPI::GetStrips(). */
+  /**
+   * Flag to draw boxes representing the results from TessBaseAPI::GetStrips().
+   */
   static final boolean DRAW_STRIP_BOXES = false;
 
-  /** Flag to draw boxes representing the results from TessBaseAPI::GetWords(). */
+  /**
+   * Flag to draw boxes representing the results from TessBaseAPI::GetWords().
+   */
   static final boolean DRAW_WORD_BOXES = true;
 
-  /** Flag to draw word text with a background varying from transparent to opaque. */
+  /**
+   * Flag to draw word text with a background varying from transparent to opaque.
+   */
   static final boolean DRAW_TRANSPARENT_WORD_BACKGROUNDS = false;
 
-  /** Flag to draw boxes representing the results from TessBaseAPI::GetCharacters(). */
+  /**
+   * Flag to draw boxes representing the results from TessBaseAPI::GetCharacters().
+   */
   static final boolean DRAW_CHARACTER_BOXES = false;
 
-  /** Flag to draw the text of words within their respective boxes from TessBaseAPI::GetWords(). */
+  /**
+   * Flag to draw the text of words within their respective boxes from TessBaseAPI::GetWords().
+   */
   static final boolean DRAW_WORD_TEXT = false;
 
-  /** Flag to draw each character in its respective box from TessBaseAPI::GetCharacters(). */
+  /**
+   * Flag to draw each character in its respective box from TessBaseAPI::GetCharacters().
+   */
   static final boolean DRAW_CHARACTER_TEXT = false;
 
   private CameraManager cameraManager;
@@ -69,7 +86,7 @@ public final class ViewfinderView extends View {
   private final int maskColor;
   private final int frameColor;
   private final int cornerColor;
-  private OcrResultText resultText;
+
   private String[] words;
   private List<Rect> regionBoundingBoxes;
   private List<Rect> textlineBoundingBoxes;
@@ -108,7 +125,7 @@ public final class ViewfinderView extends View {
       return;
     }
     int width = canvas.getWidth();
-    int height = canvas.getHeight(); 
+    int height = canvas.getHeight();
 
     // Draw the exterior (i.e. outside the framing rect) darkened
     paint.setColor(maskColor);
@@ -118,19 +135,20 @@ public final class ViewfinderView extends View {
     canvas.drawRect(0, frame.bottom + 1, width, height, paint);
 
     // If we have an OCR result, overlay its information on the viewfinder.
+    String resultText = "dsf";
     if (resultText != null) {
 
       // Only draw text/bounding boxes on viewfinder if it hasn't been resized since the OCR was requested.
-      Point bitmapSize = resultText.getBitmapDimensions();
+      //  Point bitmapSize = resultText.getBitmapDimensions();
       previewFrame = cameraManager.getFramingRectInPreview();
-      if (bitmapSize.x == previewFrame.width() && bitmapSize.y == previewFrame.height()) {
+  /*    if (bitmapSize.x == previewFrame.width() && bitmapSize.y == previewFrame.height()) {
 
 
         float scaleX = frame.width() / (float) previewFrame.width();
         float scaleY = frame.height() / (float) previewFrame.height();
 
         if (DRAW_REGION_BOXES) {
-          regionBoundingBoxes = resultText.getRegionBoundingBoxes();
+          //regionBoundingBoxes = resultText.getRegionBoundingBoxes();
           for (int i = 0; i < regionBoundingBoxes.size(); i++) {
             paint.setAlpha(0xA0);
             paint.setColor(Color.MAGENTA);
@@ -146,7 +164,7 @@ public final class ViewfinderView extends View {
 
         if (DRAW_TEXTLINE_BOXES) {
           // Draw each textline
-          textlineBoundingBoxes = resultText.getTextlineBoundingBoxes();
+          //textlineBoundingBoxes = resultText.getTextlineBoundingBoxes();
           paint.setAlpha(0xA0);
           paint.setColor(Color.RED);
           paint.setStyle(Style.STROKE);
@@ -161,7 +179,7 @@ public final class ViewfinderView extends View {
         }
 
         if (DRAW_STRIP_BOXES) {
-          stripBoundingBoxes = resultText.getStripBoundingBoxes();
+          //stripBoundingBoxes = resultText.getStripBoundingBoxes();
           paint.setAlpha(0xFF);
           paint.setColor(Color.YELLOW);
           paint.setStyle(Style.STROKE);
@@ -270,49 +288,50 @@ public final class ViewfinderView extends View {
         }
       }
 
+    }*/
+      // Draw a two pixel solid border inside the framing rect
+      paint.setAlpha(0);
+      paint.setStyle(Style.FILL);
+      paint.setColor(frameColor);
+      canvas.drawRect(frame.left, frame.top, frame.right + 1, frame.top + 2, paint);
+      canvas.drawRect(frame.left, frame.top + 2, frame.left + 2, frame.bottom - 1, paint);
+      canvas.drawRect(frame.right - 1, frame.top, frame.right + 1, frame.bottom - 1, paint);
+      canvas.drawRect(frame.left, frame.bottom - 1, frame.right + 1, frame.bottom + 1, paint);
+
+      // Draw the framing rect corner UI elements
+      paint.setColor(cornerColor);
+      canvas.drawRect(frame.left - 15, frame.top - 15, frame.left + 15, frame.top, paint);
+      canvas.drawRect(frame.left - 15, frame.top, frame.left, frame.top + 15, paint);
+      canvas.drawRect(frame.right - 15, frame.top - 15, frame.right + 15, frame.top, paint);
+      canvas.drawRect(frame.right, frame.top - 15, frame.right + 15, frame.top + 15, paint);
+      canvas.drawRect(frame.left - 15, frame.bottom, frame.left + 15, frame.bottom + 15, paint);
+      canvas.drawRect(frame.left - 15, frame.bottom - 15, frame.left, frame.bottom, paint);
+      canvas.drawRect(frame.right - 15, frame.bottom, frame.right + 15, frame.bottom + 15, paint);
+      canvas.drawRect(frame.right, frame.bottom - 15, frame.right + 15, frame.bottom + 15, paint);
+
+
+      // Request another update at the animation interval, but don't repaint the entire viewfinder mask.
+      //postInvalidateDelayed(ANIMATION_DELAY, frame.left, frame.top, frame.right, frame.bottom);
     }
-    // Draw a two pixel solid border inside the framing rect
-    paint.setAlpha(0);
-    paint.setStyle(Style.FILL);
-    paint.setColor(frameColor);
-    canvas.drawRect(frame.left, frame.top, frame.right + 1, frame.top + 2, paint);
-    canvas.drawRect(frame.left, frame.top + 2, frame.left + 2, frame.bottom - 1, paint);
-    canvas.drawRect(frame.right - 1, frame.top, frame.right + 1, frame.bottom - 1, paint);
-    canvas.drawRect(frame.left, frame.bottom - 1, frame.right + 1, frame.bottom + 1, paint);
 
-    // Draw the framing rect corner UI elements
-    paint.setColor(cornerColor);
-    canvas.drawRect(frame.left - 15, frame.top - 15, frame.left + 15, frame.top, paint);
-    canvas.drawRect(frame.left - 15, frame.top, frame.left, frame.top + 15, paint);
-    canvas.drawRect(frame.right - 15, frame.top - 15, frame.right + 15, frame.top, paint);
-    canvas.drawRect(frame.right, frame.top - 15, frame.right + 15, frame.top + 15, paint);
-    canvas.drawRect(frame.left - 15, frame.bottom, frame.left + 15, frame.bottom + 15, paint);
-    canvas.drawRect(frame.left - 15, frame.bottom - 15, frame.left, frame.bottom, paint);
-    canvas.drawRect(frame.right - 15, frame.bottom, frame.right + 15, frame.bottom + 15, paint);
-    canvas.drawRect(frame.right, frame.bottom - 15, frame.right + 15, frame.bottom + 15, paint);  
-
-
-    // Request another update at the animation interval, but don't repaint the entire viewfinder mask.
-    //postInvalidateDelayed(ANIMATION_DELAY, frame.left, frame.top, frame.right, frame.bottom);
-  }
-
-  public void drawViewfinder() {
+ /* public void drawViewfinder() {
     invalidate();
   }
-
-  /**
-   * Adds the given OCR results for drawing to the view.
-   * 
-   * @param text Object containing OCR-derived text and corresponding data.
-   */
-  public void addResultText(OcrResultText text) {
+*/
+    /**
+     * Adds the given OCR results for drawing to the view.
+     *
+     * @param text Object containing OCR-derived text and corresponding data.
+     */
+  /*public void addResultText(OcrResultText text) {
     resultText = text; 
   }
 
-  /**
-   * Nullifies OCR text to remove it at the next onDraw() drawing.
-   */
+  *//**
+     * Nullifies OCR text to remove it at the next onDraw() drawing.
+     *//*
   public void removeResultText() {
     resultText = null;
+  }*/
   }
 }

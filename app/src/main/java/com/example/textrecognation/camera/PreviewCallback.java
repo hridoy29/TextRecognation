@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.codetr.tanwir.textandlanguageusecamera.camera;
+package com.example.textrecognation.camera;
 
 import android.graphics.Point;
 import android.hardware.Camera;

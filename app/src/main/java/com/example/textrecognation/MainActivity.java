@@ -13,6 +13,7 @@ import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.DashPathEffect;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PixelFormat;
@@ -203,7 +204,25 @@ public class MainActivity extends AppCompatActivity{
 
     }
 
+    private class DemoView extends View{
+        public DemoView(Context context){
+            super(context);
+        }
 
+        @Override
+        protected void onDraw(Canvas canvas) {
+            super.onDraw(canvas);
+            Paint p = new Paint();
+            p.setColor(Color.RED);
+            DashPathEffect dashPath = new DashPathEffect(new float[]{5,5}, (float)1.0);
+
+            p.setPathEffect(dashPath);
+            p.setStyle(Paint.Style.STROKE);
+            canvas.drawCircle(100, 100, 50, p);
+
+            invalidate();
+        }
+    }
 
     public  void AddData() {
         add.setOnClickListener(

@@ -14,8 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-package com.codetr.tanwir.textandlanguageusecamera.camera;
+package com.example.textrecognation.camera;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -26,8 +25,8 @@ import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.view.SurfaceHolder;
 
-import com.codetr.tanwir.textandlanguageusecamera.CaptureActivity;
-import com.codetr.tanwir.textandlanguageusecamera.PlanarYUVLuminanceSource;
+
+import com.example.textrecognation.ImageProcess;
 
 import java.io.IOException;
 
@@ -98,7 +97,7 @@ public final class CameraManager {
     configManager.setDesiredCameraParameters(theCamera);
     
     SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-    reverseImage = prefs.getBoolean(CaptureActivity.KEY_REVERSE_IMAGE, false);
+    reverseImage = prefs.getBoolean(ImageProcess.KEY_REVERSE_IMAGE, false);
   }
 
   /**
@@ -264,7 +263,7 @@ public final class CameraManager {
    * @param height The height of the image.
    * @return A PlanarYUVLuminanceSource instance.
    */
-  public PlanarYUVLuminanceSource buildLuminanceSource(byte[] data, int width, int height) {
+/*  public PlanarYUVLuminanceSource buildLuminanceSource(byte[] data, int width, int height) {
     Rect rect = getFramingRectInPreview();
     if (rect == null) {
       return null;
@@ -272,6 +271,6 @@ public final class CameraManager {
     // Go ahead and assume it's YUV rather than die.
     return new PlanarYUVLuminanceSource(data, width, height, rect.left, rect.top,
                                         rect.width(), rect.height(), reverseImage);
-  }
+  }*/
 
 }

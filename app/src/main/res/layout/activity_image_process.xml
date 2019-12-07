@@ -1,38 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-
-    <FrameLayout
-        android:layout_width="fill_parent"
-        android:layout_height="268dp">
-
-        <SurfaceView
-            android:id="@+id/preview"
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="75dp"
-
-            android:layout_marginTop="30px"
-
-            android:layout_marginBottom="400px"
-            android:background="@drawable/rectangle" />
-    </FrameLayout>
-
-    <RelativeLayout
-        android:id="@+id/rel_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-
-        &lt;!&ndash;-Customize your views and button&ndash;&gt;
-
-    </RelativeLayout>
-</FrameLayout>-->
-
-<?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
@@ -45,8 +11,8 @@
 
     <com.example.textrecognation.ViewfinderView
         android:id="@+id/viewfinder_view"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:background="#0000" />
 
     <LinearLayout
@@ -97,7 +63,7 @@
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:background="@drawable/button"
+
                     android:text="="
                     android:textSize="30sp"
                     android:visibility="gone" />
@@ -142,7 +108,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="8dip"
             android:layout_marginTop="8dip"
-            android:background="@drawable/shutter_button"
+
             android:clickable="true"
             android:focusable="true"
             android:gravity="center_vertical"
@@ -162,5 +128,6 @@
             android:textSize="14sp" />
 
     </RelativeLayout>
+ c
 </FrameLayout>
 

@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.codetr.tanwir.textandlanguageusecamera.camera;
+package com.example.textrecognation.camera;
 
 
 import android.content.Context;
@@ -27,7 +27,8 @@ import android.util.Log;
 import android.view.Display;
 import android.view.WindowManager;
 
-import com.codetr.tanwir.textandlanguageusecamera.CaptureActivity;
+import com.example.textrecognation.ImageProcess;
+
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -93,8 +94,8 @@ final class CameraConfigurationManager {
 
     initializeTorch(parameters, prefs);
     String focusMode = null;
-    if (prefs.getBoolean(CaptureActivity.KEY_AUTO_FOCUS, true)) {
-      if (prefs.getBoolean(CaptureActivity.KEY_DISABLE_CONTINUOUS_FOCUS, false)) {
+    if (prefs.getBoolean(ImageProcess.KEY_AUTO_FOCUS, true)) {
+      if (prefs.getBoolean(ImageProcess.KEY_DISABLE_CONTINUOUS_FOCUS, false)) {
         focusMode = findSettableValue(parameters.getSupportedFocusModes(),
             Camera.Parameters.FOCUS_MODE_AUTO);
       } else {
@@ -131,16 +132,16 @@ final class CameraConfigurationManager {
     doSetTorch(parameters, newSetting);
     camera.setParameters(parameters);
     SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-    boolean currentSetting = prefs.getBoolean(CaptureActivity.KEY_TOGGLE_LIGHT, false);
+    boolean currentSetting = prefs.getBoolean(ImageProcess.KEY_TOGGLE_LIGHT, false);
     if (currentSetting != newSetting) {
       SharedPreferences.Editor editor = prefs.edit();
-      editor.putBoolean(CaptureActivity.KEY_TOGGLE_LIGHT, newSetting);
+      editor.putBoolean(ImageProcess.KEY_TOGGLE_LIGHT, newSetting);
       editor.commit();
     }
   }
 
   private static void initializeTorch(Camera.Parameters parameters, SharedPreferences prefs) {
-    boolean currentSetting = prefs.getBoolean(CaptureActivity.KEY_TOGGLE_LIGHT, false);
+    boolean currentSetting = prefs.getBoolean(ImageProcess.KEY_TOGGLE_LIGHT, false);
     doSetTorch(parameters, currentSetting);
   }
 

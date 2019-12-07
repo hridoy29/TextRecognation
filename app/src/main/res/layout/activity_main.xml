@@ -17,9 +17,11 @@ tools:context=".MainActivity">
             android:id="@+id/surface_view"
             android:layout_width="match_parent"
             android:layout_height="265dp"
-            android:focusable="auto">
-        </SurfaceView>
-
+            android:focusable="auto"></SurfaceView>
+        <!-- <com.glinter.ir.MySurface
+             android:id="@+id/surface_view2"
+             android:layout_width="match_parent"
+             android:layout_height="40dp"/>-->
        <!-- <com.example.textrecognation.ViewfinderView
             android:id="@+id/viewfinder_view"
             android:layout_width="200dp"
@@ -45,7 +47,7 @@ tools:context=".MainActivity">
 
 
     <ScrollView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,14 +58,14 @@ tools:context=".MainActivity">
 
         <TextView
             android:id="@+id/text_view"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/pic_border"
 
-            android:layout_margin="120dp"
             android:layout_alignParentBottom="true"
             android:text="No Text"
             android:textColor="#F00"
-            android:textSize="20sp" />
+            android:textSize="40sp" />
 
     </ScrollView>
 

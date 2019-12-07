@@ -11,6 +11,8 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.DashPathEffect;
@@ -49,13 +51,14 @@ import java.util.AbstractList;
 
 public class MainActivity extends AppCompatActivity{
 
-    SurfaceView cameraView;//transparentView;
+    SurfaceView cameraView,cameraView2;//transparentView;
     SurfaceHolder holder;//holderTransparent;
     Camera camera;
     private float RectLeft, RectTop,RectRight,RectBottom ;
     int  deviceHeight,deviceWidth;
 
-
+    //@Bind(R.id.surface_view2)
+    MySurface mySurface;
     TextView textView;
     CameraSource cameraSource;
     String mdcnName="";
@@ -63,7 +66,6 @@ public class MainActivity extends AppCompatActivity{
     DatabaseHelper myDb;
     EditText editName;
     Button find,add;
-
 
 
 
@@ -95,11 +97,13 @@ public class MainActivity extends AppCompatActivity{
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //setContentView(new MySurface(this));
 
 
 
 
         cameraView =   findViewById(R.id.surface_view);
+        //cameraView2 =   findViewById(R.id.surface_view2);
         textView =   findViewById(R.id.text_view);
         find=findViewById(R.id.find_btn);
         editName = findViewById(R.id.editText);
@@ -126,6 +130,7 @@ public class MainActivity extends AppCompatActivity{
 
                     .build();
             cameraView.getHolder().addCallback(new SurfaceHolder.Callback() {
+
                 @Override
                 public void surfaceCreated(SurfaceHolder surfaceHolder) {
 
@@ -158,6 +163,9 @@ public class MainActivity extends AppCompatActivity{
                 public void surfaceDestroyed(SurfaceHolder surfaceHolder) {
                     cameraSource.stop();
                 }
+
+
+
             });
 
 

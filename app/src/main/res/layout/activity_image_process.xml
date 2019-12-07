@@ -91,7 +91,7 @@
 
         <TextView
             android:id="@+id/status_view_top"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:autoLink="web"
@@ -103,7 +103,7 @@
 
         <com.codetr.tanwir.textandlanguageusecamera.camera.ShutterButton
             android:id="@+id/shutter_button"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="8dip"
@@ -117,7 +117,7 @@
 
         <TextView
             android:id="@+id/status_view_bottom"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:autoLink="web"
@@ -128,6 +128,6 @@
             android:textSize="14sp" />
 
     </RelativeLayout>
- c
+
 </FrameLayout>
 

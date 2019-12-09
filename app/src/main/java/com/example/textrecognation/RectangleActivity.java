@@ -21,6 +21,7 @@ import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.Point;
+import android.graphics.Rect;
 import android.hardware.Camera;
 import android.hardware.Camera.PictureCallback;
 import android.os.Bundle;
@@ -140,6 +141,7 @@ public class RectangleActivity extends AppCompatActivity {
             Paint p = new Paint();
             p.setColor(Color.RED);
             DashPathEffect dashPath = new DashPathEffect(new float[]{5,5}, (float)1.0);
+
             p.setPathEffect(dashPath);
             p.setStyle(Style.STROKE);
             canvas.drawCircle(screenCenterX, screenCenterY, radius, p);

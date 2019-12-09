@@ -197,7 +197,24 @@ public class MainActivity extends AppCompatActivity{
                                 TextBlock item = items.valueAt(0);
                                 textView.setText(item.getValue());
                                 mdcnName =item.getValue();
+                                {
+                                    Cursor res = myDb.getAllData(mdcnName);
+                                    if(res.getCount() == 0) {
+                                        // show message
+                                        showMessage("Error","Nothing found");
+                                        return;
+                                    }
 
+                                    StringBuffer buffer = new StringBuffer();
+                                    while (res.moveToNext()) {
+                                        buffer.append("Id :"+ res.getString(0)+"\n");
+                                        buffer.append("Name :"+ res.getString(1)+"\n");
+
+                                    }
+
+                                    // Show all data
+                                    showMessage("Data",buffer.toString());
+                                }
 
                             }
                         });
